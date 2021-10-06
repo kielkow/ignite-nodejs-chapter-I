@@ -8,6 +8,10 @@ let courses = [];
 let globalId = 0;
 
 app.get('/courses', (request, response) => {
+    if (request.query.id) {
+        const course = courses.find(c => c.id == request.query.id);
+        return response.json(course);
+    }
     return response.json(courses);
 });
 
